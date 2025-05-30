@@ -1,0 +1,5 @@
+Estructurada
+a = float(input("Ingrese el primer número: "))
+b = float(input("Ingrese el segundo número: "))
+resultado = a + b
+print("La suma es:", resultado)
