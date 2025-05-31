@@ -1,0 +1,41 @@
+Interfaz gráfica 
+
+import tkinter as tk
+from tkinter import messagebox
+
+class Triangulo:
+    def __init__(self, base, altura):
+        self.base = base
+        self.altura = altura
+
+    def calcular_area(self):
+        return (self.base * self.altura) / 2
+
+class App:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Área del Triángulo")
+
+        tk.Label(root, text="Base:").grid(row=0, column=0)
+        tk.Label(root, text="Altura:").grid(row=1, column=0)
+
+        self.base_entry = tk.Entry(root)
+        self.altura_entry = tk.Entry(root)
+        self.base_entry.grid(row=0, column=1)
+        self.altura_entry.grid(row=1, column=1)
+
+        tk.Button(root, text="Calcular", command=self.calcular).grid(row=2, column=0, columnspan=2)
+
+    def calcular(self):
+        try:
+            base = float(self.base_entry.get())
+            altura = float(self.altura_entry.get())
+            triangulo = Triangulo(base, altura)
+            area = triangulo.calcular_area()
+            messagebox.showinfo("Resultado", f"Área: {area}")
+        except ValueError:
+            messagebox.showerror("Error", "Ingresa valores numéricos válidos.")
+
+ventana = tk.Tk()
+app = App(ventana)
+ventana.mainloop()
